@@ -67,9 +67,8 @@ export default function StartupForm() {
       router.push(`/startup/${result._id}`)
     }
 
-
     return { status: "OK", error: "" };
-    
+
   } catch (error) {
     if (error instanceof z.ZodError) {
       const fieldErrors = error.flatten().fieldErrors as FieldErrors;
