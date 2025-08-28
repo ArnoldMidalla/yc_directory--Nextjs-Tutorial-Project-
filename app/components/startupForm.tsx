@@ -69,6 +69,7 @@ export default function StartupForm() {
 
 
     return { status: "OK", error: "" };
+    
   } catch (error) {
     if (error instanceof z.ZodError) {
       const fieldErrors = error.flatten().fieldErrors as FieldErrors;
