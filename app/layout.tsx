@@ -16,8 +16,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Cooperative",
   description: "Pitch, Vote, and Grow",
+  // icons: {
+  //   icon: "Logomark(1).png",
+  // },
   icons: {
-    icon: "Logomark.png",
+    icon: [
+      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      // { url: "/favicons/-48x48.png", sizes: "48x48", type: "image/png" },
+      // { url: "/favicons/-180x180.png", sizes: "180x180", type: "image/png" }, // for Apple devices
+    ],
   },
 };
 

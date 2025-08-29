@@ -1,17 +1,34 @@
+// import type { NextConfig } from "next";
+
+// const nextConfig: NextConfig = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: "https",
+//         hostname: "images.unsplash.com",
+//       },
+//     ],
+//   },
+//   /* other config options */
+//   // experimental: {
+//   //   ppr: "incremental",
+//   // },
+// };
+
+// export default nextConfig;
+
+//allow from all
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        protocol: "https",
+        hostname: "**", // allow all hosts
       },
     ],
   },
-  /* config options here */
-  // experimental: {
-  //   ppr: "incremental",
-  // },
-  // position: "bottom-right",
 };
+
+export default nextConfig;

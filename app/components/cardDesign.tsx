@@ -3,6 +3,8 @@ import EyeIcon from "../components/icons/eyeIcon";
 import Link from "next/link";
 import { Author, Startup } from "@/sanity/types";
 
+import Image from "next/image";
+
 export type CardDesignType = Omit<Startup, "author"> & {author?: Author} //if author is true, then... else just startup
 
 export default function cardDesign({ post }: { post: CardDesignType }) {
@@ -43,19 +45,20 @@ export default function cardDesign({ post }: { post: CardDesignType }) {
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <Link
-          href={`/user/${author?._id}`}
-          className="w-10 h-10 rounded-full overflow-hidden"
-        >
-          <img
-            src={`${author?.image}`}
-            alt=""
-            
-            className="w-full h-full object-cover"
-          />
-        </Link>
-        <Link href={`/user/${author?._id}`}>{author?.name}</Link>
-      </div>
+  <Link
+    href={`/user/${author?._id}`}
+    className="w-10 h-10 rounded-full overflow-hidden relative"
+  >
+    <Image
+      src={author?.image || "/default-avatar.png"}
+      alt={author?.name || "User avatar"}
+      width={40}   // w-10 = 40px
+      height={40}  // h-10 = 40px
+      className="object-cover"
+    />
+  </Link>
+  <Link href={`/user/${author?._id}`}>{author?.name}</Link>
+</div>
       <Link href={`/startup/${_id}`} className="font-bold text-lg w-fit">
         {title}
       </Link>
@@ -65,11 +68,16 @@ export default function cardDesign({ post }: { post: CardDesignType }) {
           <p className="text-sm">{ truncateTextWords(description, 150)}</p>
         </Link>
         <Link
-          href={`/startup/${_id}`}
-          className="aspect-[5/3] w-full rounded-md overflow-hidden"
-        >
-          <img src={`${image}`} alt="" className="w-full h-full object-cover" />
-        </Link>
+  href={`/startup/${_id}`}
+  className="aspect-[5/3] w-full rounded-md overflow-hidden relative"
+>
+  <Image
+    src={`${image}`}
+    alt="Startup cover"
+    fill
+    className="object-cover"
+  />
+</Link>
       </div>
       <div className="flex justify-between h-fit items-center">
         <Link 

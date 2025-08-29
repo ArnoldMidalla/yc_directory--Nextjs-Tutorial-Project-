@@ -12,15 +12,18 @@ export default async function page({
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
-  const query = (await  searchParams).query;
+  const query = (await searchParams).query;
   const params = { search: query || null };
   // const post = await client.fetch(STARTUPS_QUERY)
-  const { data: post } = await sanityFetch({ query: STARTUPS_QUERY, params: {search: query || ""} });
+  const { data: post } = await sanityFetch({
+    query: STARTUPS_QUERY,
+    params: { search: query || "" },
+  });
   //to check if working first
   console.log(JSON.stringify(post, null, 2)); //null and 2 just so its more readable
 
-  const session = await auth()
-  console.log(session?.user?.id)
+  const session = await auth();
+  console.log(session?.user?.id);
 
   // test dummy data
   // const post = [{
@@ -34,8 +37,8 @@ export default async function page({
   //   image : 'https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   // }]
   return (
-    <>
-      <section className="bg-pink-500 w-full flex flex-col gap-2 py-12 items-center font-bold pt-25">
+    <section className="py-16">
+      <section className="bg-purple-700 w-full flex flex-col gap-2 py-12 items-center font-bold">
         <div className="bg-yellow-400 text-black w-fit px-6 py-3 rotate-2 hover:rotate-6 hover:scale-102 duration-300 cursor-default">
           Pitch, Vote, Grow
         </div>
@@ -45,10 +48,12 @@ export default async function page({
           connect with enterprises
         </div>
         <p className="font-medium text-center text-sm mx-10 md:mx-20 text-white">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea aut
-          tenetur a libero. Perferendis soluta enim veniam mollitia at
-          reprehenderit? Autem in quia adipisci dicta sed dolores distinctio
-          accusamus ad.
+          At Cooperative, we believe great ideas deserve a great opportunity.
+          Our mission is to bridge the gap between brilliant startups and the
+          enterprises ready to invest in them. We provide a space for founders
+          to pitch their vision and for industry leaders to discover and nurture
+          groundbreaking solutions. Join our community and help us pitch, vote,
+          grow
         </p>
         <Searchbar query={query} />
       </section>
@@ -69,6 +74,6 @@ export default async function page({
         </div>
       </section>
       <SanityLive />
-    </>
+    </section>
   );
 }

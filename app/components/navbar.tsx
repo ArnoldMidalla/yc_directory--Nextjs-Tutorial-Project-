@@ -9,10 +9,10 @@ export async function Navbar() {
   const session = await auth();
 
   return (
-    <nav className="font-sans z-10 fixed w-full font-medium bg-white flex items-center justify-between gap-4 p-4 text-black">
+    <nav className="font-sans z-10 fixed w-full font-medium bg-white flex items-center justify-between h-16 px-4 text-black">
       <Link href="/">
         <img
-          className="h-7"
+          className="h-6 sm:h-7"
           // src="/Company=Cooperative, Style=Default, Dark mode=False(1).png"
           src="/Company=Cooperative, Style=Default, Dark mode=False(2).png"
           alt="logo"
@@ -24,7 +24,7 @@ export async function Navbar() {
         {session && session?.user ? (
           <div className="flex gap-3">
             <Link href={"/startup/create"} className="flex gap-1 items-center">
-              Create
+              <p className="hidden sm:block">Create</p>
               <CreateIcon />
             </Link>
             <form
@@ -34,8 +34,11 @@ export async function Navbar() {
               }}
             >
               {/* <button type="submit">Logout</button> */}
-              <button type="submit" className="flex gap-1 items-center cursor-pointer">
-                Logout
+              <button
+                type="submit"
+                className="flex gap-1 items-center cursor-pointer"
+              >
+                <p className="hidden sm:block">Logout</p>
                 <LogoutIcon />
               </button>
             </form>

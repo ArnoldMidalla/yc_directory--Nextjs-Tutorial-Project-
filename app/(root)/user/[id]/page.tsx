@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 
 import UserStartups from "@/app/components/userStartups";
 
+import Image from "next/image";
+
 export default async function Page({
   params,
 }: {
@@ -16,19 +18,37 @@ export default async function Page({
   if (!user) return notFound();
 
   return (
-    <section className="pt-20 px-20 flex flex-col gap-12">
-      <div className="flex items-center gap-12 w-full justify-center bg-white">
-        <div className="w-40 rounded-full overflow-clip">
-          <img src={user.image} alt="" className="w-full h-full object-fit" />
+    <section className="py-16 flex flex-col gap-12">
+      <div className="bg-purple-700 h-60 text-white flex items-center gap-8 w-full justify-center">
+        <div className="w-40 h-40 rounded-full overflow-clip relative">
+          <Image
+            src={user.image}
+            alt={user.name || "User profile"}
+            width={160} // w-40 = 160px
+            height={160}
+            className="object-cover"
+          />
         </div>
-        <div>
-          <h1 className="font-bold text-4xl">{user.name}</h1>
-          <p>@{user.username}</p>
-          <p>{user?.bio ? user?.bio : `You ain't got a bio bruh`}</p>
+        <div className="flex flex-col gap-1">
+          <div className="bg-black -rotate-2 hover:-rotate-6 hover:scale-103 duration-300 cursor-default">
+            <h1 className="text-white font-bold text-3xl px-4 py-2">
+              {user.name}
+            </h1>
+          </div>
+          <div className="bg-yellow-400 w-fit px-3 py-2 rotate-2 hover:rotate-6 hover:scale-103 duration-300 cursor-default">
+            <p className="font-bold text-sm text-black">@{user.username}</p>
+          </div>
+          <div className="bg-black w-fit px-3 py-2 -rotate-2 hover:-rotate-6 hover:scale-103 duration-300 cursor-default">
+            <p className="font-bold text-sm text-white">
+              {user?.bio ? user?.bio : `You ain't got a bio bruh`}
+            </p>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col gap-6">
-        <p className="text-center text-xl font-bold">{session?.user?.id === id ? "Your" : `${user.name}'s`} startups:</p>
+      <div className="flex flex-col gap-6 px-20">
+        <p className="text-center text-xl font-bold">
+          {session?.user?.id === id ? "Your" : `${user.name}'s`} startups:
+        </p>
         <UserStartups id={id} />
       </div>
     </section>
