@@ -27,8 +27,8 @@ export default async function Page({
           <p>{user?.bio ? user?.bio : `You ain't got a bio bruh`}</p>
         </div>
       </div>
-      <div>
-        <p>{session?.user?.id === id ? "Your" : `${user.name}'s`} startups</p>
+      <div className="flex flex-col gap-6">
+        <p className="text-center text-xl font-bold">{session?.user?.id === id ? "Your" : `${user.name}'s`} startups:</p>
         <UserStartups id={id} />
       </div>
     </section>
