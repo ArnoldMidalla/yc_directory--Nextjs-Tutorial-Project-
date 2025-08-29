@@ -4,12 +4,15 @@ import { auth } from "@/auth";
 import { writeClient } from "@/sanity/lib/write-client";
 import slugify from "slugify";
 
+// 1) import type for Sanity documents
+import type { SanityDocument } from "next-sanity";
+
+// 2) change function signature
 export const createPitch = async (
-    //here, we're getting the form data
-  state: any,
+  state: Record<string, unknown>,   // instead of `any`
   form: FormData,
   pitch: string
-) => {
+): Promise<{ error: string; status: string } | (SanityDocument & { status: "success"; error: string })> => {
      //to get session info so we can get the author (logged in user)
   const session = await auth();
   
