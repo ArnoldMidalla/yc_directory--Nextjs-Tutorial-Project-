@@ -38,7 +38,7 @@ export default async function Page({
           <div className="bg-yellow-400 w-fit px-3 py-2 rotate-2 hover:rotate-6 hover:scale-103 duration-300 cursor-default">
             <p className="font-bold text-sm text-black">@{user.username}</p>
           </div>
-          <div className="bg-black w-fit px-3 py-2 -rotate-2 hover:-rotate-6 hover:scale-103 duration-300 cursor-default">
+          <div className="bg-green-800 w-fit px-3 py-2 -rotate-2 hover:-rotate-6 hover:scale-103 duration-300 cursor-default">
             <p className="font-bold text-sm text-white">
               {user?.bio ? user?.bio : `You ain't got a bio bruh`}
             </p>
