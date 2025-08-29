@@ -45,8 +45,8 @@ export default async function Page({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-6 px-20">
-        <p className="text-center text-xl font-bold">
+      <div className="flex flex-col gap-6 px-8 md:px-20">
+        <p className="text-center text-lg sm:text-xl font-bold">
           {session?.user?.id === id ? "Your" : `${user.name}'s`} startups:
         </p>
         <UserStartups id={id} />
