@@ -44,7 +44,7 @@ export async function Navbar() {
               href={`/user/${session?.user?.id}`}
               className="flex gap-1 items-center"
             >
-              <span>{session?.user?.id}</span>
+              <span>{session?.user?.name}</span>
               <UserProfile />
             </Link>
           </div>
