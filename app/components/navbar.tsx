@@ -5,6 +5,8 @@ import UserProfile from "./icons/userProfile";
 import LogoutIcon from "./icons/logoutIcon";
 import CreateIcon from "./icons/createIcon";
 
+// import { STARTUPS_BY_AUTHOR_QUERY } from "@/sanity/lib/queries";
+
 export async function Navbar() {
   const session = await auth();
 
@@ -22,7 +24,7 @@ export async function Navbar() {
       <div>
         {/* if session exists (is true) and if it has a user, then... */}
         {session && session?.user ? (
-          <div className="flex gap-3">
+          <div className="flex gap-3 items-center">
             <Link href={"/startup/create"} className="flex gap-1 items-center">
               <p className="hidden sm:block">Create</p>
               <CreateIcon />
@@ -42,13 +44,19 @@ export async function Navbar() {
                 <LogoutIcon />
               </button>
             </form>
-
             <Link
               href={`/user/${session?.user?.id}`}
               className="flex gap-1 items-center"
             >
-              <span>{session?.user?.name}</span>
-              <UserProfile />
+              <span className="hidden sm:block">{session?.user?.name}</span>
+              {/* <UserProfile /> */}
+              <div className="overflow-clip rounded-full w-9">
+                <img
+                  src={`${session?.user?.image}`}
+                  alt=""
+                  className="w-full h-full "
+                />
+              </div>
             </Link>
           </div>
         ) : (

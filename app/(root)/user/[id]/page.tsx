@@ -19,8 +19,8 @@ export default async function Page({
 
   return (
     <section className="py-16 flex flex-col gap-12">
-      <div className="bg-purple-700 h-60 text-white flex items-center gap-8 w-full justify-center">
-        <div className="w-40 h-40 rounded-full overflow-clip relative">
+      <div className="bg-purple-700 h-90 sm:h-60 text-white flex flex-col sm:flex-row items-center gap-4 sm:gap-8 w-full justify-center">
+        <div className="w-fit h-fit rounded-full overflow-clip relative">
           <Image
             src={user.image}
             alt={user.name || "User profile"}
@@ -29,8 +29,8 @@ export default async function Page({
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col gap-1">
-          <div className="bg-black -rotate-2 hover:-rotate-6 hover:scale-103 duration-300 cursor-default">
+        <div className="flex flex-col items-center">
+          <div className="bg-black w-fit -rotate-2 hover:-rotate-6 hover:scale-103 duration-300 cursor-default">
             <h1 className="text-white font-bold text-3xl px-4 py-2">
               {user.name}
             </h1>
